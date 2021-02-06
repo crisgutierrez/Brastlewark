@@ -1,8 +1,8 @@
-package com.example.brastlewark
+package com.example.brastlewark.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.brastlewark.ui.main.MainFragment
+import com.example.brastlewark.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

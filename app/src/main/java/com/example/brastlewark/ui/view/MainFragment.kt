@@ -1,4 +1,4 @@
-package com.example.brastlewark.ui.main
+package com.example.brastlewark.ui.view
 
 import android.os.Bundle
 import android.util.Log

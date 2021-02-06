@@ -1,4 +1,4 @@
-package com.example.brastlewark.ui.main
+package com.example.brastlewark.ui.view
 
 import androidx.lifecycle.*
 import com.example.brastlewark.model.Gnome
