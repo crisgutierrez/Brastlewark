@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.brastlewark.R
 import com.example.brastlewark.ext.loadRemoteAsset
 import com.example.brastlewark.model.Gnome
+import com.example.brastlewark.util.Utils
 
 class GnomeAdapter(private val onGnomeClickedListener: OnGnomeClickedListener? = null): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -22,6 +24,7 @@ class GnomeAdapter(private val onGnomeClickedListener: OnGnomeClickedListener? =
     class GnomeViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val iconView: ImageView = view.findViewById(R.id.gnome_avatar)
         val nameView: TextView = view.findViewById(R.id.gnome_name)
+        val professionView: TextView = view.findViewById(R.id.gnome_profession)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -37,6 +40,10 @@ class GnomeAdapter(private val onGnomeClickedListener: OnGnomeClickedListener? =
             val uri = Uri.parse(items[position].avatar)
             iconView.loadRemoteAsset(uri, true)
             nameView.text = items[position].name
+            professionView.text = Utils.printList(items[position].professions)
+            professionView.isVisible = items[position].professions.isNotEmpty()
+
+
             onGnomeClickedListener?.let { listener ->
                 holder.view.setOnClickListener {
                     listener.onGnomeClicked(position)

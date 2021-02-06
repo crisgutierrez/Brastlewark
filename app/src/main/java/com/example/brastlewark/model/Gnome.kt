@@ -1,5 +1,7 @@
 package com.example.brastlewark.model
 
+import java.io.Serializable
+
 data class Gnome(
     val id: Int,
     val name: String,
@@ -10,4 +12,4 @@ data class Gnome(
     val hairColor: String?,
     val professions: List<String>,
     val friends: List<String>
-)
+): Serializable

@@ -11,6 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.brastlewark.R
+import com.example.brastlewark.ext.hideInProgress
+import com.example.brastlewark.ext.showInProgress
 import com.example.brastlewark.model.Gnome
 import com.example.brastlewark.ui.adapter.GnomeAdapter
 import com.example.brastlewark.util.DataState
@@ -31,6 +33,7 @@ class MainFragment : Fragment() {
         GnomeAdapter.OnGnomeClickedListener {
         override fun onGnomeClicked(posItemSelected: Int) {
             Log.e("cristian", "onGnomeClicked name: ${gnomeList[posItemSelected].name}")
+            navController.navigate(MainFragmentDirections.actionMainFragmentToGnomeDetailsFragment().setGnome(gnomeList[posItemSelected]))
         }
     }
     )
@@ -45,7 +48,9 @@ class MainFragment : Fragment() {
         setObservers()
         setLayout()
 
-        viewModel.setStateEvent(MainStateEvent.GetGnomeEvents)
+        if (gnomeList.isEmpty()) {
+            viewModel.setStateEvent(MainStateEvent.GetGnomeEvents)
+        }
 
 //        buttonId.setOnClickListener { navController.navigate(R.id.action_mainFragment_to_gnomeDetailsFragment) }
     }
@@ -63,22 +68,24 @@ class MainFragment : Fragment() {
         viewModel.dataState.observe(viewLifecycleOwner, Observer { dataSate ->
             when (dataSate) {
                 is DataState.InProgress -> {
+                    showInProgress()
                     Log.e("cristian", "InProgress")
 
                 }
                 is DataState.Cached -> {
-                    val gnomes = dataSate.data
-                    gnomeList = gnomes
+                    hideInProgress()
+                    gnomeList = dataSate.data
                     gnomeAdapter.setGnomes(gnomeList)
-                    Log.e("cristian", "Cached gnomes: $gnomes")
 
                 }
                 is DataState.Success -> {
-                    val gnomes = dataSate.data
-                    Log.e("cristian", "gnomes: $gnomes")
+                    hideInProgress()
+                    gnomeList = dataSate.data
+                    gnomeAdapter.setGnomes(gnomeList)
 
                 }
                 is DataState.Failure -> {
+                    hideInProgress()
                     Log.e("cristian", "Failure: ${dataSate.exception.message}")
 
                 }

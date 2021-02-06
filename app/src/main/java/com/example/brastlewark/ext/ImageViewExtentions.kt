@@ -14,7 +14,7 @@ import com.example.brastlewark.R
 fun ImageView.loadRemoteAsset(
         avatarUrl: Uri,
         circular: Boolean = false,
-        placeholderId: Int = R.drawable.ic_launcher_foreground,
+        placeholderId: Int = R.mipmap.gnomo_placeholder,
         onError: () -> Unit = {}
     ) {
         loadImage(
