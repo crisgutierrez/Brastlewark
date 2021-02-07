@@ -10,6 +10,6 @@ data class Gnome(
     val weight: Double,
     val height: Double,
     val hairColor: String,
-    val professions: List<String>,
-    val friends: List<String>
+    var professions: List<String>,
+    var friends: List<String>
 ): Serializable
