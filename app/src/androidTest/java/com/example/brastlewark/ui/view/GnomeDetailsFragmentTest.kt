@@ -1,4 +1,4 @@
-package com.example.brastlewark
+package com.example.brastlewark.ui.view
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentFactory
@@ -6,11 +6,10 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import com.example.brastlewark.R
 import com.example.brastlewark.model.Gnome
 import com.example.brastlewark.testsuport.FakeGnome
 import com.example.brastlewark.testsuport.FakeGnomeNoProfessionNoFriends
-import com.example.brastlewark.ui.view.GnomeDetailsFragment
-import com.example.brastlewark.ui.view.MainFragmentFactory
 import com.example.brastlewark.util.launchFragmentInHiltContainer
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -20,16 +19,13 @@ import org.junit.Test
 import javax.inject.Inject
 
 @HiltAndroidTest
-class MainTest {
+class GnomeDetailsFragmentTest {
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
 
     @Inject
     lateinit var testGnome: Gnome
-
-    @Inject
-    lateinit var fragmentFactory: MainFragmentFactory
 
     @Before
     fun init() {

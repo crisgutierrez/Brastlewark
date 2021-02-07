@@ -86,6 +86,6 @@ dependencies {
 
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
 
-    androidTestImplementation "androidx.test:core-ktx:1.2.0"
+    androidTestImplementation "androidx.test:core-ktx:$test_version"
 
 }
