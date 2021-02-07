@@ -15,6 +15,6 @@ abstract class AppDatabase: RoomDatabase() {
 
 
     companion object{
-        val DATABASE_NAME: String = "brastlewark_db"
+        const val DATABASE_NAME: String = "brastlewark_db"
     }
 }

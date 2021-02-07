@@ -25,6 +25,7 @@ class GnomeAdapter(private val onGnomeClickedListener: OnGnomeClickedListener? =
         val iconView: ImageView = view.findViewById(R.id.gnome_avatar)
         val nameView: TextView = view.findViewById(R.id.gnome_name)
         val professionView: TextView = view.findViewById(R.id.gnome_profession)
+        val friendsCountView: TextView = view.findViewById(R.id.gnome_friend)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -42,6 +43,7 @@ class GnomeAdapter(private val onGnomeClickedListener: OnGnomeClickedListener? =
             nameView.text = items[position].name
             professionView.text = Utils.printList(items[position].professions)
             professionView.isVisible = items[position].professions.isNotEmpty()
+            friendsCountView.text = items[position].friends.size.toString()
 
 
             onGnomeClickedListener?.let { listener ->

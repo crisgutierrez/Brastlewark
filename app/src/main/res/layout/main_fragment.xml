@@ -5,15 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/item_border_background"
+    android:background="@color/background"
     tools:context=".ui.view.MainFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gnome_recycler_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:paddingBottom="@dimen/general_margin"
-        android:clipToPadding="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -4,7 +4,11 @@ import retrofit2.http.GET
 
 interface GnomeService {
 
-    @GET("rrafols/mobile_test/master/data.json")
+    companion object {
+        private const val CITY_PATH = "rrafols/mobile_test/master/data.json"
+    }
+
+    @GET(CITY_PATH)
     suspend fun get(): CityEntity
 
 }

@@ -9,7 +9,7 @@ data class Gnome(
     val age: Int,
     val weight: Double,
     val height: Double,
-    val hairColor: String?,
+    val hairColor: String,
     val professions: List<String>,
     val friends: List<String>
 ): Serializable
