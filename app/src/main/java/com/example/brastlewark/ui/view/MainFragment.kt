@@ -34,7 +34,6 @@ class MainFragment : Fragment() {
         GnomeAdapter.OnGnomeClickedListener {
         override fun onGnomeClicked(gnomeId: Int) {
             val gnome = gnomeList.find { it.id == gnomeId }
-            Log.e("cristian", "onGnomeClicked name: ${gnome?.name}")
             navController.navigate(
                 MainFragmentDirections.actionMainFragmentToGnomeDetailsFragment().setGnome(gnome)
             )
@@ -93,15 +92,10 @@ class MainFragment : Fragment() {
         }
     }
 
-
     private fun setObservers() {
-        viewModel.dataState.observe(viewLifecycleOwner, Observer { dataSate ->
+        viewModel.dataState.observe(viewLifecycleOwner, { dataSate ->
             when (dataSate) {
-                is DataState.InProgress -> {
-                    showInProgress()
-                    Log.e("cristian", "InProgress")
-
-                }
+                is DataState.InProgress -> { showInProgress() }
                 is DataState.Cached -> {
                     hideInProgress()
                     gnomeList = dataSate.data
@@ -121,12 +115,16 @@ class MainFragment : Fragment() {
                 }
                 is DataState.Failure -> {
                     hideInProgress()
-                    Log.e("cristian", "Failure: ${dataSate.exception.message}")
+                    Log.e(TAG, "Failure: ${dataSate.exception.message}")
 
                 }
             }
         })
     }
     // endregion
+
+    companion object{
+        private val TAG = MainFragment::class.java.simpleName
+    }
 
 }

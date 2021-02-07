@@ -28,9 +28,9 @@ data class GnomeNetworkEntity(
     @Expose
     val height: Double,
 
-    @SerializedName(value = "hairColor")
+    @SerializedName(value = "hair_color")
     @Expose
-    val hairColor: String? = null,
+    val hairColor: String,
 
     @SerializedName(value = "professions")
     @Expose

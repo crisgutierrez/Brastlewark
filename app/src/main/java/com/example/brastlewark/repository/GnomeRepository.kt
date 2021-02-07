@@ -8,7 +8,6 @@ import com.example.brastlewark.room.GnomeDao
 import com.example.brastlewark.util.DataState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import java.lang.Exception
 
 class GnomeRepository
 constructor(
@@ -18,6 +17,11 @@ constructor(
     private val networkMapper: NetworkMapper
 ){
 
+    /**
+     * First we check if we don't have we request it to the BE, if we have return it right away and
+     * we check if there is new data in the BE if there is we update the list and notify the viewModel
+     * otherwise we do nothing (the viewModel already have the update data).
+     */
     suspend fun getGnomes(): Flow<DataState<List<Gnome>>> = flow {
         emit(DataState.InProgress())
 

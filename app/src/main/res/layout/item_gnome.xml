@@ -9,7 +9,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="85dp"
+            android:layout_height="@dimen/gnome_item_height"
             android:layout_marginStart="@dimen/general_margin"
             android:layout_marginEnd="@dimen/general_margin"
             android:layout_marginBottom="@dimen/half_general_margin"
@@ -26,8 +26,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:src="@mipmap/gnomo_placeholder"
-                />
+                tools:src="@mipmap/gnomo_placeholder" />
 
             <TextView
                 android:id="@+id/gnome_name"
@@ -38,39 +37,44 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textColor="@color/primary_text"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/arrow_next"
+                android:textSize="@dimen/gnome_item_name_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/gnome_friend_icon"
                 app:layout_constraintStart_toEndOf="@+id/gnome_avatar"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Criatian Gutierrez" />
 
             <TextView
                 android:id="@+id/gnome_profession"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                style="@style/SecondaryItemText"
                 android:layout_marginStart="@dimen/half_general_margin"
                 android:layout_marginEnd="@dimen/half_general_margin"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:textColor="@color/secondary_text"
-                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/arrow_next"
+                app:layout_constraintEnd_toStartOf="@+id/gnome_friend_icon"
                 app:layout_constraintStart_toEndOf="@+id/gnome_avatar"
                 app:layout_constraintTop_toBottomOf="@+id/gnome_name"
-                tools:text="Panadero, de todo un poco lo que quiero es que crezca el texto a d " />
+                tools:text="Tailor, Cook, Tinker, Metalworker, Woodcarver, Stonecarver, Potter " />
 
             <ImageView
-                android:id="@+id/arrow_next"
+                android:id="@+id/gnome_friend_icon"
                 android:layout_width="@dimen/general_icon_height"
                 android:layout_height="@dimen/general_icon_height"
-                android:src="@drawable/ic_arrow_right_fill"
+                android:layout_marginEnd="@dimen/general_quarter_margin"
+                android:src="@drawable/ic_people_black_18dp"
                 android:scaleType="center"
                 app:layout_constraintStart_toEndOf="@+id/gnome_name"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/gnome_friend"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 />
+
+            <TextView
+                android:id="@+id/gnome_friend"
+                style="@style/SecondaryItemText"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gnome_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
