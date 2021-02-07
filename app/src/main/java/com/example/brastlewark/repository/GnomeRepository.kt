@@ -18,7 +18,7 @@ constructor(
 ){
 
     /**
-     * First we check if we don't have we request it to the BE, if we have return it right away and
+     * First we check if have data stored locally, if we don't  we request it to the BE, if we have return it right away and
      * we check if there is new data in the BE if there is we update the list and notify the viewModel
      * otherwise we do nothing (the viewModel already have the update data).
      */
