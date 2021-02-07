@@ -2,9 +2,8 @@ package com.example.brastlewark.ui.view
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -15,6 +14,8 @@ import com.example.brastlewark.ext.hideInProgress
 import com.example.brastlewark.ext.showInProgress
 import com.example.brastlewark.model.Gnome
 import com.example.brastlewark.ui.adapter.GnomeAdapter
+import com.example.brastlewark.ui.viewmodel.MainStateEvent
+import com.example.brastlewark.ui.viewmodel.MainViewModel
 import com.example.brastlewark.util.DataState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.main_fragment.*
@@ -31,16 +32,46 @@ class MainFragment : Fragment() {
 
     private val gnomeAdapter = GnomeAdapter(object :
         GnomeAdapter.OnGnomeClickedListener {
-        override fun onGnomeClicked(posItemSelected: Int) {
-            Log.e("cristian", "onGnomeClicked name: ${gnomeList[posItemSelected].name}")
-            navController.navigate(MainFragmentDirections.actionMainFragmentToGnomeDetailsFragment().setGnome(gnomeList[posItemSelected]))
+        override fun onGnomeClicked(gnomeId: Int) {
+            val gnome = gnomeList.find { it.id == gnomeId }
+            Log.e("cristian", "onGnomeClicked name: ${gnome?.name}")
+            navController.navigate(
+                MainFragmentDirections.actionMainFragmentToGnomeDetailsFragment().setGnome(gnome)
+            )
         }
     }
     )
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    // region LIFECYCLE ----------------------------------------------------------------------------
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         return inflater.inflate(R.layout.main_fragment, container, false)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.options_menu, menu)
+        val searchItem: MenuItem = menu.findItem(R.id.action_search)
+        val searchView = searchItem.actionView as SearchView
+        searchView.queryHint = getString(R.string.search_menu_hint)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    viewModel.setStateEvent(MainStateEvent.FilterEvents(newText, gnomeList))
+                }
+                return false
+            }
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,9 +82,8 @@ class MainFragment : Fragment() {
         if (gnomeList.isEmpty()) {
             viewModel.setStateEvent(MainStateEvent.GetGnomeEvents)
         }
-
-//        buttonId.setOnClickListener { navController.navigate(R.id.action_mainFragment_to_gnomeDetailsFragment) }
     }
+    // endregion
 
     // region PRIVATE METHODS -----------------------------------------------------------------------
     private fun setLayout() {
@@ -82,6 +112,11 @@ class MainFragment : Fragment() {
                     hideInProgress()
                     gnomeList = dataSate.data
                     gnomeAdapter.setGnomes(gnomeList)
+
+                }
+                is DataState.FilteredList -> {
+                    hideInProgress()
+                    gnomeAdapter.setGnomes(dataSate.data)
 
                 }
                 is DataState.Failure -> {

@@ -2,4 +2,6 @@
     <string name="app_name">Brastlewark</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_menu_title">Search for a name or profession</string>
+    <string name="search_menu_hint">Write a name or profession</string>
 </resources>

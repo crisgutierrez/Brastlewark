@@ -1,5 +1,6 @@
 package com.example.brastlewark.ui.view
 
+import android.app.ActionBar
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,6 +17,11 @@ class GnomeDetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        setHasOptionsMenu(true)
+        // calling the action bar
+//        val actionBar: ActionBar? = requireActivity().actionBar
+
     }
 
     override fun onCreateView(
@@ -30,5 +36,8 @@ class GnomeDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val gnome = fragmentArgs.gnome
         Log.e("cristian", "GnomeDetailsFragment gnome: $gnome")
+        // showing the back button in action bar
+//        requireActivity().actionBar?.setDisplayHomeAsUpEnabled(true);
     }
+
 }

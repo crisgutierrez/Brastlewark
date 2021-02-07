@@ -41,6 +41,7 @@
                 android:maxLines="1"
                 app:layout_constraintStart_toEndOf="@+id/gnome_avatar"
                 app:layout_constraintEnd_toStartOf="@+id/arrow_next"
+                app:layout_constraintBottom_toTopOf="@+id/gnome_profession"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Criatian Gutierrez"
                 />
@@ -57,7 +58,6 @@
                 android:maxLines="2"
                 app:layout_constraintStart_toEndOf="@+id/gnome_avatar"
                 app:layout_constraintEnd_toStartOf="@+id/arrow_next"
-                app:layout_constraintTop_toBottomOf="@+id/gnome_name"
                 app:layout_constraintBottom_toBottomOf="parent"
                 tools:text="Panadero, de todo un poco lo que quiero es que crezca el texto a d "
                 />

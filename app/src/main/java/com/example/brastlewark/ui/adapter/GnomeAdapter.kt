@@ -16,7 +16,7 @@ import com.example.brastlewark.util.Utils
 class GnomeAdapter(private val onGnomeClickedListener: OnGnomeClickedListener? = null): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     interface OnGnomeClickedListener {
-        fun onGnomeClicked(posItemSelected: Int)
+        fun onGnomeClicked(gnomeId: Int)
     }
 
     private var items= listOf<Gnome>()
@@ -46,7 +46,7 @@ class GnomeAdapter(private val onGnomeClickedListener: OnGnomeClickedListener? =
 
             onGnomeClickedListener?.let { listener ->
                 holder.view.setOnClickListener {
-                    listener.onGnomeClicked(position)
+                    listener.onGnomeClicked(items[position].id)
                 }
             }
         }
