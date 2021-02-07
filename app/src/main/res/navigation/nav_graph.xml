@@ -17,13 +17,25 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right" >
+            <argument
+                android:name="gnome"
+                android:defaultValue="@null"
+                app:nullable="true"
+                app:argType="com.example.brastlewark.model.Gnome" />
+        </action>
     </fragment>
 
     <fragment
         android:id="@+id/gnomeDetailsFragment"
         android:name="com.example.brastlewark.ui.view.GnomeDetailsFragment"
         android:label="fragment_gnome_details"
-        tools:layout="@layout/fragment_gnome_details" />
+        tools:layout="@layout/fragment_gnome_details" >
+        <argument
+            android:name="gnome"
+            android:defaultValue="@null"
+            app:nullable="true"
+            app:argType="com.example.brastlewark.model.Gnome" />
+    </fragment>
 
 </navigation>

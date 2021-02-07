@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/task_type"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:layout_marginStart="@dimen/general_margin"
+            android:layout_marginEnd="@dimen/general_margin"
+            android:layout_marginBottom="@dimen/general_margin"
+            android:layout_marginTop="@dimen/general_margin"
+            android:background="@drawable/gnome_item_background"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="@dimen/general_margin">
+
+            <ImageView
+                android:id="@+id/gnome_avatar"
+                android:layout_width="@dimen/general_avatar_height"
+                android:layout_height="@dimen/general_avatar_height"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:src="@mipmap/gnomo_placeholder"
+                />
+
+            <TextView
+                android:id="@+id/gnome_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/half_general_margin"
+                android:layout_marginEnd="@dimen/half_general_margin"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:ellipsize="end"
+                android:maxLines="1"
+                app:layout_constraintStart_toEndOf="@+id/gnome_avatar"
+                app:layout_constraintEnd_toStartOf="@+id/arrow_next"
+                app:layout_constraintBottom_toTopOf="@+id/gnome_profession"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Criatian Gutierrez"
+                />
+
+            <TextView
+                android:id="@+id/gnome_profession"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/item_subtitle_color"
+                android:layout_marginStart="@dimen/half_general_margin"
+                android:layout_marginEnd="@dimen/half_general_margin"
+                android:ellipsize="end"
+                android:maxLines="2"
+                app:layout_constraintStart_toEndOf="@+id/gnome_avatar"
+                app:layout_constraintEnd_toStartOf="@+id/arrow_next"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="Panadero, de todo un poco lo que quiero es que crezca el texto a d "
+                />
+
+            <ImageView
+                android:id="@+id/arrow_next"
+                android:layout_width="@dimen/general_icon_height"
+                android:layout_height="@dimen/general_icon_height"
+                android:src="@drawable/ic_arrow_right_fill"
+                android:scaleType="center"
+                app:layout_constraintStart_toEndOf="@+id/gnome_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,14 +22,20 @@ constructor(
         emit(DataState.InProgress())
 
         try {
+            var cacheGnomes = gnomeDao.getAllGnomes()
+            if (!cacheGnomes.isNullOrEmpty()) {
+                emit(DataState.Cached(cacheMapper.mapFromEntityList(cacheGnomes)))
+            }
             val networkGnomes = gnomeService.get().city
             val gnomes = networkMapper.mapFromEntityList(networkGnomes)
-            for (gnome in gnomes) {
-                gnomeDao.insertGnome(cacheMapper.mapToEntity(gnome))
+            if (gnomes.size != cacheGnomes.size) {
+                for (gnome in gnomes) {
+                    gnomeDao.insertGnome(cacheMapper.mapToEntity(gnome))
+                }
+                cacheGnomes = gnomeDao.getAllGnomes()
+                emit(DataState.Success(cacheMapper.mapFromEntityList(cacheGnomes)))
             }
-            val cacheGnomes = gnomeDao.getAllGnomes()
-            emit(DataState.Success(cacheMapper.mapFromEntityList(cacheGnomes)))
-        }catch (e: Exception) {
+        } catch (e: Exception) {
             emit(DataState.Failure(e))
         }
     }
