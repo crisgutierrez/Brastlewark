@@ -3,10 +3,12 @@ package com.example.brastlewark.ui.view
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.brastlewark.R
 import com.example.brastlewark.ext.loadRemoteAsset
@@ -38,13 +40,24 @@ class GnomeDetailsFragment : Fragment() {
         if (gnome != null) {
             setLayout(gnome)
         }
-        // showing the back button in action bar
-//        requireActivity().actionBar?.setDisplayHomeAsUpEnabled(true);
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                findNavController().popBackStack()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     // endregion
 
     // region PRIVATE METHODS -----------------------------------------------------------------------
     private fun setLayout(gnome: Gnome) {
+        (activity as MainActivity?)!!.supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
         val uri = Uri.parse(gnome.avatar)
         gnome_image.loadRemoteAsset(uri)
         gnome_name.text = gnome.name
@@ -65,7 +78,11 @@ class GnomeDetailsFragment : Fragment() {
         }
 
         contact_button.text = getString(R.string.contact_gnome_button, gnome.name)
-        contact_button.setOnClickListener { Toast.makeText(requireContext(), R.string.general_not_implemented, Toast.LENGTH_SHORT).show() }
+        contact_button.setOnClickListener { Toast.makeText(
+            requireContext(),
+            R.string.general_not_implemented,
+            Toast.LENGTH_SHORT
+        ).show() }
     }
     // endregion
 

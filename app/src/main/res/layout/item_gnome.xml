@@ -26,7 +26,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:src="@mipmap/gnomo_placeholder" />
+                tools:src="@drawable/placeholder_gnomo" />
 
             <TextView
                 android:id="@+id/gnome_name"
