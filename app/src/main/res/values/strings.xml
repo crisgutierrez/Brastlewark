@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Brastlewark</string>
+    <string name="general_none">None</string>
+    <string name="general_not_implemented">This feature is not implemented yet.</string>
+    <string name="search_menu_title">Search for a name or profession</string>
+    <string name="search_menu_hint">Write a name or profession</string>
+
+<!--    GnomeDetailsFragment   -->
+    <string name="contact_gnome_button">Contact %1$s</string>
+    <string name="age_text">Age: %1$d years</string>
+    <string name="weight_text">Weight: %1$f kg</string>
+    <string name="height_text">Height: %1$f m</string>
+    <string name="hair_color_text">Hair: %1$s</string>
+    <string name="profession_text">Professions: %1$s</string>
+    <string name="friend_text">Friends: %1$s</string>
 </resources>

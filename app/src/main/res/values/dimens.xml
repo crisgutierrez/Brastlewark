@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="general_quarter_margin">4dp</dimen>
+    <dimen name="half_general_margin">8dp</dimen>
+    <dimen name="general_margin">16dp</dimen>
+    <dimen name="general_one_and_half_margin">24dp</dimen>
+    <dimen name="general_avatar_height">40dp</dimen>
+    <dimen name="general_icon_height">24dp</dimen>
+    <dimen name="general_button_height">60dp</dimen>
+
+<!--    GnomeDetailsFragment    -->
+    <dimen name="gnome_details_image_height">200dp</dimen>
+    <dimen name="gnome_details_card_margin_top">180dp</dimen>
+    <dimen name="gnome_details_name_text_size">26sp</dimen>
+    <dimen name="gnome_details_age_text_size">16sp</dimen>
+
+<!--    Gnome Item  -->
+    <dimen name="gnome_item_height">85dp</dimen>
+    <dimen name="gnome_item_name_text_size">18sp</dimen>
+    <dimen name="gnome_item_profession_text_size">12sp</dimen>
+
+
+
+</resources>
