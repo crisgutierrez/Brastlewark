@@ -86,6 +86,8 @@ class MainFragment : Fragment() {
 
     // region PRIVATE METHODS -----------------------------------------------------------------------
     private fun setLayout() {
+        (activity as MainActivity?)!!.supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+
         gnome_recycler_view.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = gnomeAdapter
